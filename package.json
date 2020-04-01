@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require test/setup.js",
-    "start": "node src/blogful.js",
+    "test": "mocha --require test/setup.js test/shopping-list-service.spec.js",
+    "start": "node src/shopping.js",
     "predeploy": "npm audit",
     "deploy": "git push heroku master"
   },

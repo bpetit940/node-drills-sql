@@ -1,11 +1,11 @@
-const ArticlesService = {
+const ShoppingService = {
   getAllArticles(knex) {
-    return knex.select("*").from("blogful_articles");
+    return knex.select("*").from("shopping_list");
   },
   insertArticle(knex, newArticle) {
     return knex
       .insert(newArticle)
-      .into("blogful_articles")
+      .into("shopping_list")
       .returning("*")
       .then(rows => {
         return rows[0];
@@ -13,21 +13,21 @@ const ArticlesService = {
   },
   getById(knex, id) {
     return knex
-      .from("blogful_articles")
+      .from("shopping_list")
       .select("*")
       .where("id", id)
       .first();
   },
   deleteArticle(knex, id) {
-    return knex("blogful_articles")
+    return knex("shopping_list")
       .where({ id })
       .delete();
   },
   updateArticle(knex, id, newArticleFields) {
-    return knex("blogful_articles")
+    return knex("shopping_list")
       .where({ id })
       .update(newArticleFields);
   }
 };
 
-module.exports = ArticlesService;
+module.exports = ShoppingService;
